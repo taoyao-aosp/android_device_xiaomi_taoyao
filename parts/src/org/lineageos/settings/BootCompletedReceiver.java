@@ -20,7 +20,11 @@ package org.lineageos.settings;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.IBinder;
 import android.util.Log;
+import android.view.Display.HdrCapabilities;
+import android.view.SurfaceControl;
 import android.content.SharedPreferences;
 import android.os.SystemProperties;
 import androidx.preference.PreferenceManager;
@@ -50,6 +54,12 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         // Touch Sampling
         boolean HTSREnabled = sharedPrefs.getBoolean(HTSR_ENABLE_KEY, false);
         FileUtils.writeLine(HTSR_FILE, HTSREnabled ? "1" : "0");
+
+        // Override HDR types
+        final IBinder displayToken = SurfaceControl.getInternalDisplayToken();
+        SurfaceControl.overrideHdrTypes(displayToken, new int[]{
+                HdrCapabilities.HDR_TYPE_DOLBY_VISION, HdrCapabilities.HDR_TYPE_HDR10,
+                HdrCapabilities.HDR_TYPE_HLG, HdrCapabilities.HDR_TYPE_HDR10_PLUS});
 
         // DC Dimming
         FileUtils.enableService(context);
