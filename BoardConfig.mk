@@ -213,7 +213,8 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := //hardware/qcom-caf/wlan/qcwcn:lib_driver_cm
 CONFIG_ACS := true
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB_EVENT := "ON"
 CONFIG_IEEE80211AX := true
-QC_WIFI_HIDL_FEATURE_DUAL_AP := true
+# (1 STA + 1 AP) or (1 STA + 1 of (P2P or NAN)) or (2 AP) or (2 STA)
+WIFI_HAL_INTERFACE_COMBINATIONS := {{{STA}, 1}, {{AP}, 1}}, {{{STA}, 1}, {{P2P, NAN}, 1}}, {{{AP}, 2}}, {{{STA}, 2}}
 WIFI_FEATURE_HOSTAPD_11AX := true
 WIFI_DRIVER_DEFAULT := wlan
 # (1 STA + 1 AP) or (1 STA + 1 of (P2P or NAN)) or (2 AP) or (2 STA)
