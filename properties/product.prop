@@ -4,5 +4,8 @@ ro.adb.secure=0
 ro.debuggable=1
 ro.secure=0
 
+# Bluetooth
+bluetooth.device_id.vendor_id=0x001D
+
 # LMK tuning
 ro.lmk.swap_free_low_percentage=100
