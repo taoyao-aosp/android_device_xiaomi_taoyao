@@ -374,6 +374,7 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 
 PRODUCT_PACKAGES += \
     NfcOverlay \
+    NcmTetheringOverlay \
     SettingsProviderOverlay \
     DeviceAsWebcamOverlaySM8350
 
