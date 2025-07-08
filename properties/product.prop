@@ -1,3 +1,6 @@
+# eBPF
+ro.bpf.kver_override=5.10.239
+
 # FUN time
 persist.sys.usb.config=mtp,adb
 ro.adb.secure=0
