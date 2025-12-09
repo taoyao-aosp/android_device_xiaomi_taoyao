@@ -747,4 +747,8 @@
 
     <!-- See AmbientSensor.AmbientColorTemperatureSensor. The ambient color temperature sensor name. -->
     <string name="config_displayWhiteBalanceColorTemperatureSensorName">com.google.sensor.color</string>
+
+    <!-- Whether WM DisplayContent supports high performance transitions
+         (lower-end devices may want to disable) -->
+    <bool name="config_deviceSupportsHighPerfTransitions">false</bool>
 </resources>
