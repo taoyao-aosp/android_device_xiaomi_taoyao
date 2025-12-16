@@ -5,6 +5,16 @@
 //
 
 cc_library {
+    name: "libmisightjson_shim",
+    srcs: [
+        "json_value.cpp",
+    ],
+	shared_libs: ["libjsoncpp"],
+    compile_multilib: "both",
+    vendor: true,
+}
+
+cc_library {
     name: "citsensorservice_shim",
     srcs: ["citsensorservice.c"],
 }
