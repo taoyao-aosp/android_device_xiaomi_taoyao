@@ -54,6 +54,14 @@ ro.vendor.qti.sys.fw.bservice_enable=true
 DEVICE_PROVISIONED=1
 persist.vendor.qti.telephony.vt_cam_interface=2
 ril.subscription.types=NV,RUIM
+
+# Radio Force enable VoLTE/VoWifi/VT
+persist.dbg.volte_avail_ovr=1
+persist.dbg.vt_avail_ovr=1
+persist.dbg.wfc_avail_ovr=1
+
+# Radio Use Correct IMEI in SIP reg
+persist.vendor.radio.ue_imei_in_sip=1
 persist.vendor.vonr_setting_support=1
 
 # Sensors
