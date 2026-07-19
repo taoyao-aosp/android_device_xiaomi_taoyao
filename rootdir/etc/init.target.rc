@@ -33,7 +33,6 @@ import /vendor/etc/init/hw/init.mi_thermald.rc
 import /vendor/etc/init/hw/init.batterysecret.rc
 
 on early-init
-    exec u:r:vendor_modprobe:s0 -- /vendor/bin/vendor_modprobe.sh
     wait /sys/devices/soc0/soc_id
 
 on init
@@ -69,7 +68,6 @@ on init
 
 on early-fs
     start vold
-    exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules/ cnss2
 
 on fs
     start hwservicemanager

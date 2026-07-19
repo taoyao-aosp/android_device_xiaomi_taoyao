@@ -84,6 +84,7 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 
 BOARD_BOOT_HEADER_VERSION := 3
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 
 BOARD_KERNEL_CMDLINE += androidboot.console=ttyMSM0
 BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom
@@ -100,32 +101,10 @@ BOARD_KERNEL_CMDLINE += ip6table_raw.raw_before_defrag=1
 BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
 
 # Workaround to make lineage's soong generator work
-TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_SOURCE := device/xiaomi/taoyao-kernel/kernel-headers
+TARGET_KERNEL_CONFIG := taoyao_defconfig
+TARGET_KERNEL_SOURCE := kernel/xiaomi/taoyao
+TARGET_KERNEL_NO_GCC := true
 TARGET_KERNEL_VERSION := 5.4
-
-# Kernel Modules
-BOARD_KERNEL_MODULE_DIRS := 5.4-gki
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES := \
-    $(DEVICE_PATH)-kernel/modules/focaltech_touch.ko \
-    $(DEVICE_PATH)-kernel/modules/goodix_core.ko \
-    $(DEVICE_PATH)-kernel/modules/hwid.ko \
-    $(DEVICE_PATH)-kernel/modules/msm_drm.ko \
-    $(DEVICE_PATH)-kernel/modules/xiaomi_touch.ko
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES)
-BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)-kernel/modules/*.ko)
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(BOARD_VENDOR_KERNEL_MODULES)
-BOARD_VENDOR_KERNEL_MODULES_5.4-gki := $(wildcard $(DEVICE_PATH)-kernel/modules/5.4-gki/*.ko)
-BOARD_VENDOR_KERNEL_MODULES_LOAD_5.4-gki := $(BOARD_VENDOR_KERNEL_MODULES_5.4-gki)
-TARGET_NO_KERNEL_OVERRIDE := true
-BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)-kernel/dtb
-BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)-kernel/dtbo.img
-
-TARGET_FORCE_PREBUILT_KERNEL := true
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)-kernel/kernel
-PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)-kernel/kernel:kernel
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072
@@ -169,7 +148,6 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/properties/vendor.prop
 BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
-BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
