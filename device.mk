@@ -389,7 +389,8 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service.lineage-libperfmgr \
-    libqti-perfd-client
+    libqti-perfd-client \
+    libperfmgr
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json \
