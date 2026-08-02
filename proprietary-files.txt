@@ -916,10 +916,6 @@ vendor/etc/seccomp_policy/vendor.qti.hardware.dsp.policy
 vendor/lib/vendor.qti.hardware.dsp@1.0.so
 vendor/lib64/vendor.qti.hardware.dsp@1.0.so
 
-# Dumpstate
-vendor/bin/hw/android.hardware.dumpstate@1.1-service.xiaomi
-vendor/etc/init/android.hardware.dumpstate@1.1-service.xiaomi.rc
-
 # Embedded Secure Element power manager
 vendor/bin/hw/vendor.qti.esepowermanager@1.1-service
 vendor/etc/init/vendor.qti.esepowermanager@1.1-service.rc
