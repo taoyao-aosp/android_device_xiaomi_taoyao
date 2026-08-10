@@ -10,8 +10,10 @@ r_dir_file(mi_thermald, sysfs_thermal)
 r_dir_file(mi_thermald, vendor_sysfs_kgsl)
 r_dir_file(mi_thermald, vendor_sysfs_battery_supply)
 r_dir_file(mi_thermald, vendor_sysfs_graphics)
+r_dir_file(mi_thermald, vendor_displayfeature_sysfs)
 r_dir_file(mi_thermald, thermal_data_file)
 r_dir_file(mi_thermald, vendor_data_file)
+r_dir_file(mi_thermald, vendor_sysfs_udfps)
 
 allow mi_thermald sysfs:dir { read open };
 allow mi_thermald sysfs_thermal:file w_file_perms;
