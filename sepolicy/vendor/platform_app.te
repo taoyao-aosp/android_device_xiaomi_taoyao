@@ -42,7 +42,6 @@ binder_call(platform_app, vendor_hal_soter_qti)
 
 allow platform_app app_data_file:file execute;
 allow platform_app default_android_hwservice:hwservice_manager find;
-allow platform_app user_profile_data_file:file read;
 allow platform_app vendor_camera_libs:file { getattr open read map execute };
 allow platform_app vendor_camera_sensor_prop:file { getattr open read map };
 allow platform_app vendor_file:dir watch;
