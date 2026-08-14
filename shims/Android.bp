@@ -13,8 +13,3 @@ cc_library {
     compile_multilib: "both",
     vendor: true,
 }
-
-cc_library {
-    name: "wfdservice_shim",
-    srcs: ["wfdservice.c"],
-}
