@@ -27,10 +27,10 @@ import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.provider.MediaStore;
-import android.telecom.DefaultDialerManager;
 import android.view.Display;
 import android.view.Surface;
 import android.view.WindowManager;
+import android.app.role.RoleManager;
 
 import androidx.preference.PreferenceManager;
 
@@ -220,7 +220,7 @@ public final class ThermalUtils {
 
         if (AppUtils.isBrowserApp(mContext, packageName, UserHandle.myUserId())) {
             return STATE_BROWSER;
-        } else if (DefaultDialerManager.getDefaultDialerApplication(mContext).equals(packageName)) {
+        } else if (isDefaultDialer(packageName)) {
             return STATE_DIALER;
         } else if (isCameraApp(packageName)) {
             return STATE_CAMERA;
@@ -229,6 +229,29 @@ public final class ThermalUtils {
         }
         // TODO: STATE_BENCHMARK, STATE_STREAMING
     }
+
+private boolean isDefaultDialer(String packageName) {
+    RoleManager roleManager = mContext.getSystemService(RoleManager.class);
+
+    if (roleManager == null) {
+        return false;
+    }
+
+    if (!roleManager.isRoleAvailable(RoleManager.ROLE_DIALER)) {
+        return false;
+    }
+
+    if (!roleManager.isRoleHeld(RoleManager.ROLE_DIALER)) {
+        return false;
+    }
+
+    return packageName.equals(
+            roleManager.getRoleHolders(RoleManager.ROLE_DIALER)
+                    .stream()
+                    .findFirst()
+                    .orElse("")
+    );
+}
 
     private boolean isCameraApp(String packageName) {
         final Intent cameraIntent =
