@@ -43,6 +43,8 @@
     <string name="doze_brightness_adaptive">Adaptive brightness</string>
     <string name="doze_brightness_title">Doze brightness level</string>
     <string name="doze_brightness_summary">Brightness level of doze pulse screen (% of max allowed brightness)</string>
+    <string name="doze_settings_help_title">Ambient display</string>
+    <string name="doze_settings_help_text">Configure ambient display and, when supported, Always On Display and its brightness. Enabling Always On Display may increase battery usage.</string>
 
     <!-- Clear Speaker -->
    <string name="clear_speaker_title">Clear speaker</string>
